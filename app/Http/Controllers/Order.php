@@ -34,7 +34,7 @@ class Order extends Controller
             'description' => 'string|nullable|max:5000',
             'cart.*.flourType' => ['required', 'string', Rule::in(['Albă', 'Integrală', 'Fără gluten'])],
             'cart.*.colorType' => ['required', 'string'],
-            'cart.*.pastaType' => ['required', 'string', Rule::in(['Tagliatelle', 'Spaghete1'])],
+            'cart.*.pastaType' => ['required', 'string', Rule::in(['Tagliatelle', 'Spaghete'])],
             'cart.*.packType' => ['required', 'string'],
             'cart.*.quantity' => ['required', 'numeric', 'integer', 'min:1'],
         ]);
@@ -47,6 +47,7 @@ class Order extends Controller
         
         return response()->json($item, 200);
 
+        //aici
         // Mail::to($user->email)->send(new ResetPassword($remember_token, $user));
 
         // return response()->json(['created' => true], 200);
