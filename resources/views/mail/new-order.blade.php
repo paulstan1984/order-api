@@ -10,7 +10,7 @@ Telefone: {{$order['phone']}}<br/>
 
 ## Observații
 <x-mail::panel>
-{{nl2br($order['description'])}}
+{{$order['description']}}
 </x-mail::panel>
 
 ## Produsele comandate
