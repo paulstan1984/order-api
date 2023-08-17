@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
+use App\Mail\NewOrder;
 
 class Order extends Controller
 {
@@ -37,6 +38,11 @@ class Order extends Controller
             'cart.*.pastaType' => ['required', 'string', Rule::in(['Tagliatelle', 'Spaghete'])],
             'cart.*.packType' => ['required', 'string'],
             'cart.*.quantity' => ['required', 'numeric', 'integer', 'min:1'],
+            'cart.*.unitPrice' => ['required', 'numeric', 'integer', 'min:1'],
+            'cart.*.price' => ['required', 'numeric', 'integer', 'min:1'],
+
+            'totalPrice' => ['required', 'numeric', 'integer', 'min:1'],
+            'deliveryPrice' => ['numeric', 'nullable', 'integer', 'min:1'],
         ]);
 
         if ($validator->fails()) {
@@ -45,12 +51,10 @@ class Order extends Controller
 
         $item = $validator->validated();
         
+
+        Mail::to(env('orders_email'))->send(new NewOrder($item));
+
         return response()->json($item, 200);
-
-        //aici
-        // Mail::to($user->email)->send(new ResetPassword($remember_token, $user));
-
-        // return response()->json(['created' => true], 200);
     }
 
     /**
