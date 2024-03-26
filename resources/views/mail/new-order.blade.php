@@ -18,7 +18,7 @@ Telefone: {{$order['phone']}}<br/>
 | Produs | Preț unitar | Cantitate | Preț |
 | :--------- | :------------- | :------------- | :------------- |
 @foreach ($order['cart'] as $p)
-|   {{ $p['packType'] }} de {{ $p['pastaType'] }} cu făină {{ $p['flourType'] }} și {{ $p['colorType'] }} | {{ $p['unitPrice'] }} Lei | {{ $p['quantity'] }} | {{ $p['price'] }} Lei |
+|   {{ $p['packType'] }} cu făină {{ $p['flourType'] }} și {{ $p['colorType'] }} | {{ $p['unitPrice'] }} Lei | {{ $p['quantity'] }} | {{ $p['price'] }} Lei |
 @endforeach
 </x-mail::table>
 
