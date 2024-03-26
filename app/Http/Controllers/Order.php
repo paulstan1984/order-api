@@ -33,12 +33,8 @@ class Order extends Controller
             'email' => 'string|nullable|email|max:200',
             'phone' => 'required|numeric|max_digits:13',
             'description' => 'string|nullable|max:5000',
-            'cart.*.flourType' => ['required', 'string', Rule::in([
-                'Albă', 'Integrală', 'De Secară',
-                'Fără gluten - din fulgi de ovăz', 'De Năut', 'De Alac', 'Integrală Spelta'
-            ])],
+            'cart.*.flourType' => ['required', 'string'],
             'cart.*.colorType' => ['required', 'string'],
-            'cart.*.pastaType' => ['required', 'string', Rule::in(['Tagliatelle', 'Spaghete'])],
             'cart.*.packType' => ['required', 'string'],
             'cart.*.quantity' => ['required', 'numeric', 'integer', 'min:1'],
             'cart.*.unitPrice' => ['required', 'numeric', 'integer', 'min:1'],
