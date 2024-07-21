@@ -18,13 +18,13 @@ Telefone: {{$order['phone']}}<br/>
 | Produs | Preț unitar | Cantitate | Preț |
 | :--------- | :------------- | :------------- | :------------- |
 @foreach ($order['cart'] as $p)
-|   {{ $p['packType'] }} cu făină {{ $p['flourType'] }} și {{ $p['colorType'] }} | {{ $p['unitPrice'] }} Lei | {{ $p['quantity'] }} | {{ $p['price'] }} Lei |
+|   {{ $p['description'] }} | {{ $p['unitPrice'] }} Lei | {{ $p['quantity'] }} | {{ $p['price'] }} Lei |
 @endforeach
 </x-mail::table>
 
 ### Total cumpărături {{$order['totalPrice']}} Lei
 
-@if($order['totalPrice'] < 100 )
+@if($order['totalPrice'] < 200 )
 ### Transport {{$order['deliveryPrice']}} Lei
 ### Total {{$order['deliveryPrice'] + $order['totalPrice']}} Lei
 @endif 
